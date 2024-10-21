@@ -1,0 +1,55 @@
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.csproj.AssemblyReference.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.AssemblyInfoInputs.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.AssemblyInfo.cs
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.csproj.CoreCompileInputs.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.sourcelink.json
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.RazorAssemblyInfo.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller 1\obj\Debug\net8.0\Taller 1.RazorAssemblyInfo.cs
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.csproj.AssemblyReference.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.AssemblyInfoInputs.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.AssemblyInfo.cs
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.csproj.CoreCompileInputs.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.RazorAssemblyInfo.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.RazorAssemblyInfo.cs
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.sourcelink.json
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\appsettings.json
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Taller1.exe
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Taller1.deps.json
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Taller1.runtimeconfig.json
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Taller1.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Taller1.pdb
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\DnsClient.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\MongoDB.Bson.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\MongoDB.Driver.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\SharpCompress.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Snappier.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\ZstdSharp.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.csproj.Up2Date
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller1.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\refint\Taller1.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller1.pdb
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.genruntimeconfig.cache
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\ref\Taller1.dll

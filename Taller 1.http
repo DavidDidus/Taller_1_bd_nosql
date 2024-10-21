@@ -1,0 +1,6 @@
+@Taller_1_HostAddress = http://localhost:5012
+
+GET {{Taller_1_HostAddress}}
+Accept: application/json
+
+###
