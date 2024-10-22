@@ -3,9 +3,6 @@ namespace Taller1;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
 
-
-
-
 public interface IComentarioService {
     Task<List<Comentario>> GetTopComentariosByCursoIdAsync(string cursoId);
     Task<List<Comentario>> GetAllComentariosByCursoIdAsync(string cursoId);

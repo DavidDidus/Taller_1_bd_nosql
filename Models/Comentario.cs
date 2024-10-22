@@ -3,9 +3,10 @@ using MongoDB.Bson.Serialization.Attributes;
 public class Comentario {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
 
-    public string CursoId { get; set; }
+    public string Id { get; set; }
+    public string ClaseId { get; set; }
+    
     public string Autor { get; set; }
     public string Titulo { get; set; }
     public string Detalle { get; set; }

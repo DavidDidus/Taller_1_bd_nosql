@@ -1,0 +1,11 @@
+{
+    "_id": "ObjectId",
+    "unidad_id": "ObjectId", 
+    "numero_orden": 1,
+    "nombre": "Nombre de la clase",
+    "video_url": "URL del video",
+    "descripcion": "Descripción de la clase",
+    "adjuntos": ["URL adjunto 1", "URL adjunto 2"],
+    "comentarios": ["ObjectIdComentario1", "ObjectIdComentario2"] 
+  }
+  

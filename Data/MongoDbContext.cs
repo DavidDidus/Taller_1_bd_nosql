@@ -12,5 +12,7 @@ public class MongoDbContext {
     }
 
     public IMongoCollection<Curso> Cursos => _database.GetCollection<Curso>("Cursos");
-    // Agrega más colecciones según lo necesario
+    public IMongoCollection<Clase> Clases => _database.GetCollection<Clase>("Clases");
+    public IMongoCollection<Comentario> Comentarios => _database.GetCollection<Unidad>("Comentarios");
+   
 }

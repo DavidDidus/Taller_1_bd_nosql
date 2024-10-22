@@ -14,5 +14,6 @@ public class Curso {
     public string Banner { get; set; }
     public double Valoracion { get; set; }
     public int Inscritos { get; set; }
-    public List<Unidad> Unidades { get; set; }
+   
+
 }
