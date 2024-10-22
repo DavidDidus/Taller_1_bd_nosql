@@ -1,0 +1,8 @@
+{
+    "_id": "ObjectId",
+    "curso_id": "ObjectId",  
+    "numero_orden": 1,
+    "nombre": "Nombre de la unidad",
+    "clases": ["ObjectIdClase1", "ObjectIdClase2"]  
+  }
+  

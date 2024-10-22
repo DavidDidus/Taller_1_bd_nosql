@@ -1,0 +1,10 @@
+{
+    "_id": "ObjectId",
+    "nombre": "Nombre del curso",
+    "descripcion_breve": "Descripción breve del curso",
+    "imagen_principal": "URL de la imagen principal",
+    "imagen_banner": "URL de la imagen del banner",
+    "valoracion": 4.5,  
+    "cantidad_inscritos": 120
+  }
+  

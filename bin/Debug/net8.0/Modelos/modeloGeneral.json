@@ -1,0 +1,38 @@
+{
+    "_id": "ObjectId",
+    "nombre": "Nombre del curso",
+    "descripcion_breve": "Descripción breve del curso",
+    "descripcion_detalle": "Descripción completa del curso",
+    "imagen_principal": "URL de la imagen principal",
+    "imagen_banner": "URL de la imagen del banner",
+    "valoracion": 4.5,  
+    "cantidad_inscritos": 120,
+    "unidades": [
+      {
+        "numero_orden": 1,
+        "nombre": "Nombre de la unidad",
+        "clases": [
+          {
+            "numero_orden": 1,
+            "nombre": "Nombre de la clase",
+            "video_url": "URL del video",
+            "descripcion": "Descripción de la clase",
+            "adjuntos": ["URL adjunto 1", "URL adjunto 2"],
+            "comentarios": [
+              {
+                "autor": "Nombre del autor",
+                "fecha": "YYYY-MM-DD",
+                "titulo": "Título del comentario",
+                "detalle": "Detalle del comentario",
+                "valoracion": 4,  
+                "me_gusta": 10,
+                "no_me_gusta": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
+  

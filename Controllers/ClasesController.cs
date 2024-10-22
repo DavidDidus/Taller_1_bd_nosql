@@ -1,31 +1,62 @@
 using Microsoft.AspNetCore.Mvc;
-namespace Taller1;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-[ApiController]
 [Route("api/[controller]")]
-public class ClasesController : ControllerBase {
-    private readonly IClaseService _claseService;
+[ApiController]
+public class ClaseController : ControllerBase
+{
+    private readonly ClaseService _claseService;
 
-    public ClasesController(IClaseService claseService) {
+    public ClaseController(ClaseService claseService)
+    {
         _claseService = claseService;
     }
 
-    // GET: api/clases/unidad/{unidadId}
-    [HttpGet("unidad/{unidadId:length(24)}")]
-    public async Task<ActionResult<List<Clase>>> GetClasesByUnidad(string unidadId,string unidadNombre) {
-        var clases = await _claseService.GetClasesByUnidadIdAsync(unidadId,unidadNombre);
+    [HttpGet]
+    public async Task<ActionResult<List<Clase>>> GetClases()
+    {
+        var clases = await _claseService.GetClasesAsync();
         return Ok(clases);
     }
 
-    // GET: api/clases/{id}
-    [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<Clase>> GetClaseById(string id,string claseId) {
-        var clase = await _claseService.GetClaseByIdAsync(id,claseId);
-
-        if (clase == null) {
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Clase>> GetClaseById(string id)
+    {
+        var clase = await _claseService.GetClaseByIdAsync(id);
+        if (clase == null)
+        {
             return NotFound();
         }
-
         return Ok(clase);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<Clase>> CreateClase(Clase clase)
+    {
+        await _claseService.CreateClaseAsync(clase);
+        return CreatedAtAction(nameof(GetClaseById), new { id = clase.Id }, clase);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateClase(string id, Clase clase)
+    {
+        var exists = await _claseService.UpdateClaseAsync(id, clase);
+        if (!exists)
+        {
+            return NotFound();
+        }
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteClase(string id)
+    {
+        var deleted = await _claseService.DeleteClaseAsync(id);
+        if (!deleted)
+        {
+            return NotFound();
+        }
+        return NoContent();
     }
 }

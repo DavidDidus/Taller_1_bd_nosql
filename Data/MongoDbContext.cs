@@ -13,6 +13,8 @@ public class MongoDbContext {
 
     public IMongoCollection<Curso> Cursos => _database.GetCollection<Curso>("Cursos");
     public IMongoCollection<Clase> Clases => _database.GetCollection<Clase>("Clases");
-    public IMongoCollection<Comentario> Comentarios => _database.GetCollection<Unidad>("Comentarios");
-   
+    public IMongoCollection<Comentario> Comentarios => _database.GetCollection<Comentario>("Comentarios");
+    public IMongoCollection<Unidad> Unidades => _database.GetCollection<Unidad>("unidades");
+
+    
 }

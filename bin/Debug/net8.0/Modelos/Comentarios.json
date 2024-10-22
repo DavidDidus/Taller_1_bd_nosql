@@ -1,0 +1,12 @@
+{
+    "_id": "ObjectId",
+    "clase_id": "ObjectId",  
+    "autor": "Nombre del autor",
+    "fecha": "YYYY-MM-DD",
+    "titulo": "Título del comentario",
+    "detalle": "Detalle del comentario",
+    "valoracion": 4,  
+    "me_gusta": 10,
+    "no_me_gusta": 2
+  }
+  

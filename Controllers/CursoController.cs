@@ -1,36 +1,61 @@
-namespace Taller1;
-
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 
-[ApiController]
+
 [Route("api/[controller]")]
-public class CursoController : ControllerBase {
-    private readonly ICursoService _cursoService;
+[ApiController]
+public class CursoController : ControllerBase
+{
+    private readonly CursoService _cursoService;
 
-    public CursoController(ICursoService cursoService) {
+    public CursoController(CursoService cursoService)
+    {
         _cursoService = cursoService;
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetCursos() {
-        var cursos = await _cursoService.GetAllCursosAsync();
+    public async Task<ActionResult<List<Curso>>> GetCursos()
+    {
+        var cursos = await _cursoService.GetCursosAsync();
         return Ok(cursos);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> CreateCurso(CreateCursoDto cursoDto) {
-        if (!ObjectId.TryParse(cursoDto.Id, out _)) {
-            cursoDto.Id = ObjectId.GenerateNewId().ToString();
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Curso>> GetCursoById(string id)
+    {
+        var curso = await _cursoService.GetCursoByIdAsync(id);
+        if (curso == null)
+        {
+            return NotFound();
         }
-        var curso = new Curso {
-            Id = cursoDto.Id,
-            Nombre = cursoDto.Nombre,
-            DescripcionCorta = cursoDto.DescripcionBreve,
-            Imagen = cursoDto.Imagen,
+        return Ok(curso);
+    }
 
-        };
+    [HttpPost]
+    public async Task<ActionResult<Curso>> CreateCurso(Curso curso)
+    {
         await _cursoService.CreateCursoAsync(curso);
-        return CreatedAtAction(nameof(GetCursos), new { id = cursoDto.Id }, cursoDto);
+        return CreatedAtAction(nameof(GetCursoById), new { id = curso.Id }, curso);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateCurso(string id, Curso curso)
+    {
+        var exists = await _cursoService.UpdateCursoAsync(id, curso);
+        if (!exists)
+        {
+            return NotFound();
+        }
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteCurso(string id)
+    {
+        var deleted = await _cursoService.DeleteCursoAsync(id);
+        if (!deleted)
+        {
+            return NotFound();
+        }
+        return NoContent();
     }
 }

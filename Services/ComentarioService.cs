@@ -1,53 +1,41 @@
-namespace Taller1;
-
+using MongoDB.Bson;
 using MongoDB.Driver;
-using Microsoft.Extensions.Options;
+using Taller1;
 
-public interface IComentarioService {
-    Task<List<Comentario>> GetTopComentariosByCursoIdAsync(string cursoId);
-    Task<List<Comentario>> GetAllComentariosByCursoIdAsync(string cursoId);
-    Task CreateComentarioAsync(Comentario comentario);
-    Task DeleteComentarioAsync(string id);
-    Task<Comentario> GetAllComentariosByCurso(string cursoId);
-}
-
-
-public class ComentarioService : IComentarioService {
+public class ComentarioService
+{
     private readonly IMongoCollection<Comentario> _comentarios;
 
-    public ComentarioService(IOptions<MongoDbSettings> mongoDbSettings) {
-        var client = new MongoClient(mongoDbSettings.Value.ConnectionString);
-        var database = client.GetDatabase(mongoDbSettings.Value.DatabaseName);
-        _comentarios = database.GetCollection<Comentario>("Comentarios");
+    public ComentarioService(MongoDbContext context)
+    {
+        _comentarios = context.Comentarios;
     }
 
-    // Obtener los 3 comentarios más valorados de un curso
-    public async Task<List<Comentario>> GetTopComentariosByCursoIdAsync(string cursoId) {
-        return await _comentarios
-            .Find(comentario => comentario.CursoId == cursoId)
-            .SortByDescending(comentario => comentario.Valoracion)
-            .Limit(3)
-            .ToListAsync();
+    public async Task<List<Comentario>> GetComentariosAsync()
+    {
+        return await _comentarios.Find(comentario => true).ToListAsync();
     }
 
-    // Obtener todos los comentarios de un curso
-    public async Task<List<Comentario>> GetAllComentariosByCursoIdAsync(string cursoId) {
-        return await _comentarios
-            .Find(comentario => comentario.CursoId == cursoId)
-            .SortByDescending(comentario => comentario.Valoracion)
-            .ToListAsync();
+    public async Task<Comentario> GetComentarioByIdAsync(string id)
+    {
+        return await _comentarios.Find(comentario => comentario.Id == id).FirstOrDefaultAsync();
     }
 
-    // Añadir un nuevo comentario a un curso
-    public async Task CreateComentarioAsync(Comentario comentario) {
+    public async Task<Comentario> CreateComentarioAsync(Comentario comentario)
+    {
         await _comentarios.InsertOneAsync(comentario);
+        return comentario;
     }
 
-    // Eliminar un comentario
-    public async Task DeleteComentarioAsync(string id) {
-        await _comentarios.DeleteOneAsync(comentario => comentario.Id == id);
+    public async Task<bool> UpdateComentarioAsync(string id, Comentario comentarioUpdate)
+    {
+        var result = await _comentarios.ReplaceOneAsync(comentario => comentario.Id == id, comentarioUpdate);
+        return result.MatchedCount > 0;
     }
-    public async Task<Comentario> GetAllComentariosByCurso(string cursoId) {
-        return await _comentarios.Find(comentario => comentario.CursoId == cursoId).FirstOrDefaultAsync();
+
+    public async Task<bool> DeleteComentarioAsync(string id)
+    {
+        var result = await _comentarios.DeleteOneAsync(comentario => comentario.Id == id);
+        return result.DeletedCount > 0;
     }
 }

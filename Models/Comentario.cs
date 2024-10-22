@@ -1,15 +1,21 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-public class Comentario {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
 
-    public string Id { get; set; }
-    public string ClaseId { get; set; }
-    
+public class Comentario
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)] 
+    public string? Id { get; set; }
+
+    [BsonElement("autor")]
     public string Autor { get; set; }
-    public string Titulo { get; set; }
-    public string Detalle { get; set; }
-    public double Valoracion { get; set; }  // Por ejemplo, 4.5, 3.0, etc.
+
+    [BsonElement("fecha")]
     public DateTime Fecha { get; set; }
+
+    [BsonElement("titulo")]
+    public string Titulo { get; set; }
+
+    [BsonElement("detalle")]
+    public string Detalle { get; set; }
 }

@@ -43,9 +43,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc": {
+            "DotNetEnv": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[3.1.1, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

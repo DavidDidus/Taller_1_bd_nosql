@@ -1,19 +1,27 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System.Collections.Generic;
 
-public class Curso {
+public class Curso
+{
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
+    [BsonRepresentation(BsonType.ObjectId)] 
+    public string? Id { get; set; }
 
+    [BsonElement("nombre")]
     public string Nombre { get; set; }
-    public string DescripcionCorta { get; set; }
-    public string DescripcionLarga { get; set; }
-    public string Imagen { get; set; }
-    public string Banner { get; set; }
-    public double Valoracion { get; set; }
-    public int Inscritos { get; set; }
-   
 
+    [BsonElement("descripcion_breve")]
+    public string DescripcionBreve { get; set; }
+
+    [BsonElement("imagen_principal")]
+    public string ImagenPrincipal { get; set; }
+
+    [BsonElement("imagen_banner")]
+    public string ImagenBanner { get; set; }
+
+    [BsonElement("valoracion")]
+    public double Valoracion { get; set; }
+
+    [BsonElement("cantidad_inscritos")]
+    public int CantidadInscritos { get; set; }
 }
