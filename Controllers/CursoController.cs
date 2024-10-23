@@ -91,7 +91,7 @@ public class CursoController : ControllerBase
                 CursoId = creado.Id,
                 Nombre = unidadDto.Nombre,
                 NumeroOrden = unidadDto.numeroOrden,
-                Clases = new List<string>() // Lista de IDs de clases
+                Clases = new List<ClaseDto>() // Lista de IDs de clases
             };
 
             var unidadCreada = await _unidadService.CreateUnidadAsync(unidad);
@@ -109,7 +109,6 @@ public class CursoController : ControllerBase
                 };
 
                 var claseCreada = await _claseService.CreateClaseAsync(clase);
-                unidad.Clases.Add(claseCreada.Id); // Agrega el ID de la clase a la lista
             }
 
             await _unidadService.UpdateUnidadAsync(unidadCreada.Id, unidad); // Actualiza la unidad con los IDs de las clases
