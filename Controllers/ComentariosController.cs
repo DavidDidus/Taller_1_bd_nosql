@@ -37,26 +37,4 @@ public class ComentarioController : ControllerBase
         await _comentarioService.CreateComentarioAsync(comentario);
         return CreatedAtAction(nameof(GetComentarioById), new { id = comentario.Id }, comentario);
     }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateComentario(string id, Comentario comentario)
-    {
-        var exists = await _comentarioService.UpdateComentarioAsync(id, comentario);
-        if (!exists)
-        {
-            return NotFound();
-        }
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteComentario(string id)
-    {
-        var deleted = await _comentarioService.DeleteComentarioAsync(id);
-        if (!deleted)
-        {
-            return NotFound();
-        }
-        return NoContent();
-    }
 }

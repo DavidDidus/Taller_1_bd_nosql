@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0YNzszzRO9w=",
+  "dgSpecHash": "Y1venHyClzc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\Taller 1.csproj",
+  "projectFilePath": "C:\\Users\\drodr\\Desktop\\Universidad_\\Base de datos no sql\\Taller_1_bd_nosql\\Taller 1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\drodr\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\drodr\\.nuget\\packages\\dotnetenv\\3.1.1\\dotnetenv.3.1.1.nupkg.sha512",

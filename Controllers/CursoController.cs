@@ -6,11 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 public class CursoController : ControllerBase
 {
     private readonly CursoService _cursoService;
+    private readonly ComentarioService _comentarioService;
+    private readonly UnidadService _unidadService;
+    private readonly ClaseService _claseService;
 
-    public CursoController(CursoService cursoService)
+    public CursoController(CursoService cursoService, ComentarioService comentarioService, UnidadService unidadService, ClaseService claseService)
     {
         _cursoService = cursoService;
+        _comentarioService = comentarioService;
+        _unidadService = unidadService;
+        _claseService = claseService;
     }
+   
 
     [HttpGet]
     public async Task<ActionResult<List<Curso>>> GetCursos()
@@ -23,39 +30,91 @@ public class CursoController : ControllerBase
     public async Task<ActionResult<Curso>> GetCursoById(string id)
     {
         var curso = await _cursoService.GetCursoByIdAsync(id);
+
         if (curso == null)
         {
             return NotFound();
         }
-        return Ok(curso);
+        var comentarios = await _comentarioService.GetTop3ComentariosByCursoIdAsync(id);
+        var unidades = await _unidadService.GetUnidadesByCursoIdAsync(id);
+
+        var detalleCurso = new {
+            curso,
+            unidades,
+            comentarios,
+        };
+
+        return Ok(detalleCurso);
+    }
+    
+    [HttpGet]
+    [Route("{cursoId}/unidades/{unidadId}/clases/{claseId}")]
+    public async Task<IActionResult> GetClaseDetalle(string cursoId, string unidadId, string claseId)
+    {
+        var clase = await _claseService.GetClaseByIdAsync(claseId);
+        if (clase == null)
+        {
+            return NotFound();
+        }
+
+        var comentarios = await _comentarioService.GetComentariosByClaseIdAsync(claseId);
+
+        var claseDetalle = new {
+            clase,
+            comentarios
+        };
+
+        return Ok(claseDetalle);
     }
 
     [HttpPost]
-    public async Task<ActionResult<Curso>> CreateCurso(Curso curso)
+    public async Task<ActionResult<Curso>> CreateCurso([FromBody] CursoDto cursoDto)
     {
-        await _cursoService.CreateCursoAsync(curso);
-        return CreatedAtAction(nameof(GetCursoById), new { id = curso.Id }, curso);
-    }
+        var curso = new Curso{
+            Nombre = cursoDto.Nombre,
+            DescripcionBreve = cursoDto.DescripcionBreve,
+            ImagenPrincipal = cursoDto.ImagenPrincipal,
+            ImagenBanner = cursoDto.ImagenBanner,
+            Valoracion = 0,
+            CantidadInscritos = 0
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateCurso(string id, Curso curso)
-    {
-        var exists = await _cursoService.UpdateCursoAsync(id, curso);
-        if (!exists)
-        {
-            return NotFound();
+        };
+        var creado = await _cursoService.CreateCursoAsync(curso);
+        if (creado == null){
+            return BadRequest("Error al crear el curso");
         }
-        return NoContent();
-    }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteCurso(string id)
-    {
-        var deleted = await _cursoService.DeleteCursoAsync(id);
-        if (!deleted)
+        foreach (var unidadDto in cursoDto.Unidades)
         {
-            return NotFound();
+            var unidad = new Unidad
+            {
+                CursoId = creado.Id,
+                Nombre = unidadDto.Nombre,
+                NumeroOrden = unidadDto.numeroOrden,
+                Clases = new List<string>() // Lista de IDs de clases
+            };
+
+            var unidadCreada = await _unidadService.CreateUnidadAsync(unidad);
+
+            foreach (var claseDto in unidadDto.Clases)
+            {
+                var clase = new Clase
+                {
+                    UnidadId = unidadCreada.Id,
+                    NumeroOrden = claseDto.NumeroOrden,
+                    Nombre = claseDto.Nombre,
+                    Descripcion = claseDto.Descripcion,
+                    VideoUrl = claseDto.VideoUrl,
+                    Adjuntos = claseDto.Adjuntos
+                };
+
+                var claseCreada = await _claseService.CreateClaseAsync(clase);
+                unidad.Clases.Add(claseCreada.Id); // Agrega el ID de la clase a la lista
+            }
+
+            await _unidadService.UpdateUnidadAsync(unidadCreada.Id, unidad); // Actualiza la unidad con los IDs de las clases
         }
-        return NoContent();
+        
+    return Ok(curso);
     }
 }

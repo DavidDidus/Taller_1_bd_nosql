@@ -24,4 +24,5 @@ public class Curso
 
     [BsonElement("cantidad_inscritos")]
     public int CantidadInscritos { get; set; }
+    
 }

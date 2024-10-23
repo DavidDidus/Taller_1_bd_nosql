@@ -7,6 +7,8 @@ public class Comentario
     [BsonRepresentation(BsonType.ObjectId)] 
     public string? Id { get; set; }
 
+    public string ClaseId {get; set;}
+
     [BsonElement("autor")]
     public string Autor { get; set; }
 
@@ -18,4 +20,10 @@ public class Comentario
 
     [BsonElement("detalle")]
     public string Detalle { get; set; }
+
+    public int Valoracion { get; set; }
+
+    public int me_gusta { get; set; }
+
+    public int no_me_gusta { get; set; }
 }

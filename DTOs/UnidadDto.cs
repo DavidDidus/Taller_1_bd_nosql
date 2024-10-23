@@ -1,9 +1,7 @@
 public class UnidadDto {
+    public string cursoId { get; set; }
     public string Nombre { get; set; }
-    public List<ClaseDto> Clases { get; set; }
+    public int numeroOrden { get; set; }
+    public List<string> Clases { get; set; }    
 }
 
-public class CreateUnidadDto {
-    public string Nombre { get; set; }
-    public List<CreateClaseDto> Clases { get; set; }
-}

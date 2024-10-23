@@ -21,6 +21,10 @@ public class UnidadService
         
         return await _unidades.Find(unidad => unidad.Id == id).FirstOrDefaultAsync();
     }
+    public async Task<List<Unidad>> GetUnidadesByCursoIdAsync(string id)
+    {
+        return await _unidades.Find(unidad => unidad.CursoId == id).ToListAsync();
+    }
 
     public async Task<Unidad> CreateUnidadAsync(Unidad unidad)
     {   
