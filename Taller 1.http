@@ -1,6 +1,9 @@
-@Taller_1_HostAddress = http://localhost:5012
+@Taller_1_HostAddress = http://localhost:5012/curso
 
 GET {{Taller_1_HostAddress}}
 Accept: application/json
 
 ###
+@Taller_1_Curso_info = http://localhost:5012/curso/6719b0f7525cf8d0da005484
+GET {{Taller_1_Curso_info}}
+Accept: application/json

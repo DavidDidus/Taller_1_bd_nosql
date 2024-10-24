@@ -41,9 +41,7 @@ C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.
 C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\Taller 1.genruntimeconfig.cache
 C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\obj\Debug\net8.0\ref\Taller1.dll
 C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Modelos\Clases.json
-C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Modelos\Comentarios.json
 C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Modelos\Cursos.json
-C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Modelos\modeloGeneral.json
 C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Modelos\Unidades.json
 C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\DotNetEnv.dll
 C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Sprache.dll
@@ -102,3 +100,5 @@ C:\Users\drodr\Desktop\Universidad_\Base de datos no sql\Taller_1_bd_nosql\obj\D
 C:\Users\drodr\Desktop\Universidad_\Base de datos no sql\Taller_1_bd_nosql\obj\Debug\net8.0\Taller 1.csproj.Up2Date
 C:\Users\drodr\Desktop\Universidad_\Base de datos no sql\Taller_1_bd_nosql\obj\Debug\net8.0\Taller 1.genruntimeconfig.cache
 C:\Users\drodr\Desktop\Universidad_\Base de datos no sql\Taller_1_bd_nosql\obj\Debug\net8.0\ref\Taller1.dll
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Modelos\ComentarioClase.json
+C:\Users\drodr\Desktop\Universidad\Base de datos no sql\Taller_1\bin\Debug\net8.0\Modelos\ComentarioCurso.json

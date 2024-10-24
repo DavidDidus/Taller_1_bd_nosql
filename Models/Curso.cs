@@ -25,4 +25,10 @@ public class Curso
     [BsonElement("cantidad_inscritos")]
     public int CantidadInscritos { get; set; }
     
+    [BsonElement("unidades")]
+    public List<Unidad> Unidades { get; set; }
+
+    [BsonElement("comentarios")]
+    public List<ComentarioCurso> Comentarios { get; set; }
+    
 }

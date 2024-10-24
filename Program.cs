@@ -34,7 +34,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<CursoService>();
 builder.Services.AddScoped<UnidadService>();
 builder.Services.AddScoped<ClaseService>();
-builder.Services.AddScoped<ComentarioService>();
+builder.Services.AddScoped<ComentarioCursoService>();
 
 // Swagger para documentación de la API (opcional)
 builder.Services.AddEndpointsApiExplorer();

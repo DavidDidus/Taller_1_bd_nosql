@@ -18,5 +18,5 @@ public class Unidad
     public string Nombre { get; set; } // Ensure this is a string
 
     [BsonElement("clases")]
-    public List<ClaseDto> Clases { get; set; }
+    public List<Clase> Clases { get; set; }
 }
