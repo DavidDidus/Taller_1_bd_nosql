@@ -13,7 +13,7 @@ public class CursoService
 
     public async Task<List<Curso>> GetCursosAsync()
     {
-        return await _cursos.Find(id => true).ToListAsync();
+        return await _cursos.Find(Id => true).ToListAsync();
     }
 
     public async Task<Curso> GetCursoByIdAsync(string id)
