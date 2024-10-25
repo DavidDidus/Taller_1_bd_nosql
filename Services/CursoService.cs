@@ -8,6 +8,7 @@ public class CursoService
     private readonly IMongoCollection<Unidad> _unidades;
     private readonly IMongoCollection<ComentarioCurso> _comentariosCurso; 
     private readonly IMongoCollection<Clase> _clases;
+    private readonly IMongoCollection<ComentarioClase> _comentariosClase;
 
     public CursoService(MongoDbContext context)
     {
@@ -15,6 +16,7 @@ public class CursoService
         _unidades = context.Unidades;
         _comentariosCurso = context.ComentariosCurso;
         _clases = context.Clases;
+        _comentariosClase = context.ComentariosClase;
 
     }
 
@@ -33,51 +35,60 @@ public class CursoService
         await _cursos.InsertOneAsync(curso);
         return curso;
     }
+    public async Task<List<Unidad>> GetCursoContenidoAsyc(string id)
+    {
+        var curso = await _cursos.Find(c => c.Id == id).FirstOrDefaultAsync();
+        if (curso != null)
+        {
+            // Obtener unidades
+            var unidades = await _unidades.Find(u =>  u.CursoId == id).SortBy(u => u.NumeroOrden).ToListAsync();
+            var unidadesModificadas = new List<Unidad>();
+
+            foreach (var unidad in unidades)
+            {
+                // Obtener clases
+                var clases = await _clases.Find(c => c.UnidadId == unidad.Id).SortBy(c => c.NumeroOrden).ToListAsync();
+                unidad.Clases = clases;
+
+                foreach (var clase in clases)
+                {
+                    // Obtener comentarios de la clase
+                    var comentarios = await _comentariosClase.Find(c => c.Claseid == clase.Id).ToListAsync();
+                    clase.Comentarios = comentarios;
+                }
+                unidadesModificadas.Add(unidad);
+            }
+            
+            curso.Unidades = unidadesModificadas;
+
+        }
+        return curso.Unidades;
+    }
+    
     public async Task<Curso> GetCursoDetalleAsync(string id)
     {
         var curso = await _cursos.Find(c => c.Id == id).FirstOrDefaultAsync();
         if (curso != null)
         {
             // Obtener unidades
-            var unidades = await _unidades.Find(u =>  u.CursoId == id).ToListAsync();
+            var unidades = await _unidades.Find(u =>  u.CursoId == id).SortBy(u => u.NumeroOrden).ToListAsync();
             var unidadesModificadas = new List<Unidad>();
 
             foreach (var unidad in unidades)
             {
                 // Obtener clases
-                var clases = await _clases.Find(c => c.UnidadId == unidad.Id).ToListAsync();
+                var clases = await _clases.Find(c => c.UnidadId == unidad.Id).SortBy(c => c.NumeroOrden).ToListAsync();
                 unidad.Clases = clases;
                 unidadesModificadas.Add(unidad);
             }
             
             curso.Unidades = unidadesModificadas;
 
-            // Obtener comentarios más valorados del curso
-            List<ComentarioCurso> comentarios = [];
-            foreach (var unidad in unidades)
-            {
-                var comentariosUnidad = await _comentariosCurso.Find(c => c.CursoId == curso.Id)
-                                                        .SortByDescending(c => c.Valoracion)
-                                                        .Limit(3)
-                                                        .ToListAsync();
-                comentarios.AddRange(comentariosUnidad);
-            }
-
-            // Ordenar los comentarios por valoración y tomar los 3 más valorados
-            curso.Comentarios = comentarios.OrderByDescending(c => c.Valoracion).Take(3).ToList();
+            // Obtener comentarios del curso
+            var comentarios = await _comentariosCurso.Find(c => c.CursoId == curso.Id).ToListAsync();
+            curso.Comentarios = comentarios;
         }
         return curso;
     }
-
-    public async Task<bool> UpdateCursoAsync(string id, Curso cursoUpdate)
-    {
-        var result = await _cursos.ReplaceOneAsync(curso => curso.Id == id, cursoUpdate);
-        return result.MatchedCount > 0;
-    }
-
-    public async Task<bool> DeleteCursoAsync(string id)
-    {
-        var result = await _cursos.DeleteOneAsync(curso => curso.Id == id);
-        return result.DeletedCount > 0;
-    }
+    
 }

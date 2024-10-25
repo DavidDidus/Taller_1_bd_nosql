@@ -1,9 +1,5 @@
 using Taller1;
 using DotNetEnv;
-using Microsoft.Extensions.Options;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
-using MongoDB.Bson;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,12 +31,17 @@ builder.Services.AddScoped<CursoService>();
 builder.Services.AddScoped<UnidadService>();
 builder.Services.AddScoped<ClaseService>();
 builder.Services.AddScoped<ComentarioCursoService>();
+builder.Services.AddScoped<ComentarioClaseService>();
+
 
 // Swagger para documentación de la API (opcional)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.Urls.Add("http://*:5012");
+
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();

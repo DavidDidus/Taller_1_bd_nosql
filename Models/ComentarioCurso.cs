@@ -26,4 +26,10 @@ public class ComentarioCurso
 
     [BsonElement("valoracion")]
     public int Valoracion { get; set; }
+    
+    [BsonElement("me_gusta")]
+    public int me_gusta { get; set; }
+    
+    [BsonElement("no_me_gusta")]
+    public int no_me_gusta { get; set; }
 }

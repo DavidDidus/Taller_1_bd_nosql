@@ -9,7 +9,7 @@ public class Unidad
 
     [BsonElement("curso_id")]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string CursoId { get; set; }
+    public string? CursoId { get; set; }
 
     [BsonElement("numero_orden")]
     public int NumeroOrden { get; set; }

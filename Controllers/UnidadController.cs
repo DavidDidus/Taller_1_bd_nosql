@@ -38,25 +38,5 @@ public class UnidadController : ControllerBase
         return CreatedAtAction(nameof(GetUnidadById), new { id = unidad.Id }, unidad);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateUnidad(string id, Unidad unidad)
-    {
-        var exists = await _unidadService.UpdateUnidadAsync(id, unidad);
-        if (!exists)
-        {
-            return NotFound();
-        }
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUnidad(string id)
-    {
-        var deleted = await _unidadService.DeleteUnidadAsync(id);
-        if (!deleted)
-        {
-            return NotFound();
-        }
-        return NoContent();
-    }
+    
 }

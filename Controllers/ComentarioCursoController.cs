@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class ComentarioCursoController : ControllerBase {
 
@@ -22,7 +22,7 @@ public class ComentarioCursoController : ControllerBase {
     [HttpGet("{id}")]
     public async Task<ActionResult<ComentarioCurso>> GetComentarioCursoById(string id)
     {
-        ComentarioCurso comentarioCurso = await _comentarioCursoService.GetComentarioCursoByIdAsync(id);
+        var comentarioCurso = await _comentarioCursoService.GetComentarioCursoByIdAsync(id);
         if (comentarioCurso == null)
         {
             return NotFound();

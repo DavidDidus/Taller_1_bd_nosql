@@ -5,10 +5,12 @@ using Taller1;
 public class UnidadService
 {
     private readonly IMongoCollection<Unidad> _unidades;
+    private readonly IMongoCollection<Clase> _clases;
 
     public UnidadService(MongoDbContext context)
     {
         _unidades = context.Unidades;
+        _clases = context.Clases;
     }
 
     public async Task<List<Unidad>> GetUnidadesAsync()
@@ -18,11 +20,19 @@ public class UnidadService
 
     public async Task<Unidad> GetUnidadByIdAsync(string id)
     {
+        var unidad = await _unidades.Find(unidad => unidad.Id == id).FirstOrDefaultAsync();
+
+        if(unidad != null)
+        {
+            var clases = await _clases.Find(clase => clase.UnidadId == id).ToListAsync();
+            unidad.Clases = clases;
+        }
         
-        return await _unidades.Find(unidad => unidad.Id == id).FirstOrDefaultAsync();
+        return unidad;
     }
     public async Task<List<Unidad>> GetUnidadesByCursoIdAsync(string id)
     {
+
         return await _unidades.Find(unidad => unidad.CursoId == id).ToListAsync();
     }
 
@@ -36,15 +46,4 @@ public class UnidadService
         return unidad;
     }
 
-    public async Task<bool> UpdateUnidadAsync(string id, Unidad unidadUpdate)
-    {
-        var result = await _unidades.ReplaceOneAsync(unidad => unidad.Id == id, unidadUpdate);
-        return result.MatchedCount > 0;
-    }
-
-    public async Task<bool> DeleteUnidadAsync(string id)
-    {
-        var result = await _unidades.DeleteOneAsync(unidad => unidad.Id == id);
-        return result.DeletedCount > 0;
-    }
 }

@@ -1,9 +1,91 @@
-@Taller_1_HostAddress = http://localhost:5012/curso
+@List_cursos = http://192.168.1.89:5012/curso
 
-GET {{Taller_1_HostAddress}}
+GET {{List_cursos}}
 Accept: application/json
 
 ###
-@Taller_1_Curso_info = http://localhost:5012/curso/6719b0f7525cf8d0da005484
-GET {{Taller_1_Curso_info}}
+@Curso_contenido = http://localhost:5012/curso/671b21d097475bd7f0f9de0a
+GET {{Curso_contenido}}
+Accept: application/json 
+
+###
+@Curso_detalle = http://localhost:5012/curso/671b21d097475bd7f0f9de0a/detalle
+
+GET {{Curso_detalle}}
 Accept: application/json
+
+###
+@Comentarios_curso = http://localhost:5012/comentariocurso/671b21d097475bd7f0f9de0a
+
+GET {{Comentarios_curso}}
+Accept: application/json
+
+###
+@Crear_curso = http://localhost:5012/curso/
+POST {{Crear_curso}}
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nombre": "Curso de Desarrollo Web",
+    "descripcionBreve": "Aprende a desarrollar aplicaciones web.",
+    "imagenPrincipal": "https://example.com/imagen_principal.jpg",
+    "imagenBanner": "https://example.com/imagen_banner.jpg",
+    "cantidadInscritos": 0,
+    "unidades": [
+        {
+            "nombre": "Introducción a HTML",
+            "numeroOrden": 1,
+            "clases": [
+                {
+                    "nombre": "Estructura Básica de HTML",
+                    "numeroOrden": 1,
+                    "descripcion": "Aprende la estructura básica de un documento HTML.",
+                    "videoUrl": "https://example.com/video_html_estructura",
+                    "adjuntos": [
+                        "https://example.com/adjunto1",
+                        "https://example.com/adjunto2"
+                    ]
+                },
+                {
+                    "nombre": "Etiquetas Comunes de HTML",
+                    "numeroOrden": 2,
+                    "descripcion": "Conoce las etiquetas más comunes utilizadas en HTML.",
+                    "videoUrl": "https://example.com/video_html_etiquetas",
+                    "adjuntos": [
+                        "https://example.com/adjunto3",
+                        "https://example.com/adjunto4"
+                    ]
+                }
+            ]
+        },
+        {
+            "nombre": "Introducción a CSS",
+            "numeroOrden": 2,
+            "clases": [
+                {
+                    "nombre": "Selectores y Propiedades de CSS",
+                    "numeroOrden": 1,
+                    "descripcion": "Aprende a utilizar selectores y propiedades en CSS.",
+                    "videoUrl": "https://example.com/video_css_selectores",
+                    "adjuntos": [
+                        "https://example.com/adjunto5",
+                        "https://example.com/adjunto6"
+                    ]
+                },
+                {
+                    "nombre": "Diseño de Página con CSS",
+                    "numeroOrden": 2,
+                    "descripcion": "Conoce cómo diseñar una página web utilizando CSS.",
+                    "videoUrl": "https://example.com/video_css_diseno",
+                    "adjuntos": [
+                        "https://example.com/adjunto7",
+                        "https://example.com/adjunto8"
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+###

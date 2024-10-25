@@ -16,9 +16,9 @@ public class ComentarioCursoService{
         return await _comentariosCurso.Find(comentarioCurso => true).ToListAsync();
     }
 
-    public async Task<ComentarioCurso> GetComentarioCursoByIdAsync(string id)
+    public async Task<List<ComentarioCurso>> GetComentarioCursoByIdAsync(string id)
     {
-        return await _comentariosCurso.Find(comentarioCurso => comentarioCurso.Id == id).FirstOrDefaultAsync();
+        return await _comentariosCurso.Find(comentarioCurso => comentarioCurso.CursoId == id).ToListAsync();
     }
 
     public async Task<ComentarioCurso> CreateCursoAsycn(ComentarioCurso comentarioCurso)

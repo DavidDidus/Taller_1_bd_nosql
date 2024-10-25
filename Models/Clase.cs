@@ -9,7 +9,7 @@ public class Clase
 
     [BsonElement("unidad_id")]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string UnidadId { get; set; }
+    public string? UnidadId { get; set; }
 
     [BsonElement("numero_orden")]
     public int NumeroOrden { get; set; }
@@ -27,6 +27,6 @@ public class Clase
     public List<string> Adjuntos { get; set; }
 
     [BsonElement("comentarios")]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public List<string> Comentarios { get; set; }
+    
+    public List<ComentarioClase>? Comentarios { get; set; }
 }
