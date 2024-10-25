@@ -85,7 +85,11 @@ public class CursoService
             curso.Unidades = unidadesModificadas;
 
             // Obtener comentarios del curso
-            var comentarios = await _comentariosCurso.Find(c => c.CursoId == curso.Id).ToListAsync();
+            var comentarios = await _comentariosCurso.Find(c => c.CursoId == curso.Id)
+                                                     .SortByDescending(c => c.Valoracion)
+                                                     .Limit(3)
+                                                     .ToListAsync();
+            
             curso.Comentarios = comentarios;
         }
         return curso;

@@ -5,6 +5,7 @@ Accept: application/json
 
 ###
 @Curso_contenido = http://localhost:5012/curso/671b21d097475bd7f0f9de0a
+
 GET {{Curso_contenido}}
 Accept: application/json 
 
@@ -22,6 +23,7 @@ Accept: application/json
 
 ###
 @Crear_curso = http://localhost:5012/curso/
+
 POST {{Crear_curso}}
 Content-Type: application/json
 Accept: application/json
