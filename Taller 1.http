@@ -1,4 +1,4 @@
-@List_cursos = http://192.168.1.89:5012/curso
+@List_cursos = http://localhost:5012/curso
 
 GET {{List_cursos}}
 Accept: application/json
