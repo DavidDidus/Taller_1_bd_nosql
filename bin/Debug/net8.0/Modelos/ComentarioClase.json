@@ -1,0 +1,13 @@
+{
+    "Id": "id",
+    "UnidadId": "unidadId",
+    "Autor": "autor",
+    "Fecha": "fecha",
+    "Titulo": "titulo",
+    "Detalle": "detalle",
+    "Valoracion": "valoracion",
+    "me_gusta": "me_gusta",
+    "no_me_gusta": "no_me_gusta"
+}
+
+    

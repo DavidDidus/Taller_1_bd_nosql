@@ -40,6 +40,13 @@ public class CursoController : ControllerBase
         return Ok(curso);
     }
 
+    [HttpPost]  
+    public async Task<ActionResult<Curso>> CreateCurso(Curso curso)
+    {
+        Curso cursoCreated = await _cursoService.CreateCursoAsync(curso);
+        return CreatedAtAction(nameof(GetCursoDetalle), new { id = cursoCreated.Id }, cursoCreated);
+    }
+
     
    
 }
