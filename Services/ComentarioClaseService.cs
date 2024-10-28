@@ -1,15 +1,10 @@
 using MongoDB.Driver;
-
 using Taller1;
 
-public class ComentarioClaseService{
+public class ComentarioClaseService(MongoDbContext context)
+{
 
-    private readonly IMongoCollection<ComentarioClase> _comentariosClase;
-
-    public ComentarioClaseService(MongoDbContext context)
-    {
-        _comentariosClase = context.ComentariosClase;
-    }
+    private readonly IMongoCollection<ComentarioClase> _comentariosClase = context.ComentariosClase;
 
     public async Task<List<ComentarioClase>> GetComentariosClaseAsync()
     {

@@ -8,16 +8,16 @@ public class Curso
     public string? Id { get; set; }
 
     [BsonElement("nombre")]
-    public string Nombre { get; set; }
+    public string? Nombre { get; set; }
 
     [BsonElement("descripcion_breve")]
-    public string DescripcionBreve { get; set; }
+    public string? DescripcionBreve { get; set; }
 
     [BsonElement("imagen_principal")]
-    public string ImagenPrincipal { get; set; }
+    public string? ImagenPrincipal { get; set; }
 
     [BsonElement("imagen_banner")]
-    public string ImagenBanner { get; set; }
+    public string? ImagenBanner { get; set; }
 
     [BsonElement("valoracion")]
     public double Valoracion { get; set; }
@@ -26,7 +26,7 @@ public class Curso
     public int CantidadInscritos { get; set; }
     
     [BsonElement("unidades")]
-    public List<Unidad> Unidades { get; set; }
+    public List<Unidad>? Unidades { get; set; }
 
     [BsonElement("comentarios")]
     public List<ComentarioCurso>? Comentarios { get; set; }

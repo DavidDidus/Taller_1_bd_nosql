@@ -5,7 +5,7 @@ public class Unidad
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string? Id { get; set; } // Made nullable
+    public string? Id { get; set; }
 
     [BsonElement("curso_id")]
     [BsonRepresentation(BsonType.ObjectId)]
@@ -15,8 +15,8 @@ public class Unidad
     public int NumeroOrden { get; set; }
 
     [BsonElement("nombre")]
-    public string Nombre { get; set; } // Ensure this is a string
+    public string? Nombre { get; set; }
 
     [BsonElement("clases")]
-    public List<Clase> Clases { get; set; }
+    public List<Clase>? Clases { get; set; }
 }

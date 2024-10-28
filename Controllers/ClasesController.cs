@@ -1,17 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ClaseController : ControllerBase
+public class ClaseController(ClaseService claseService) : ControllerBase
 {
-    private readonly ClaseService _claseService;
-
-    public ClaseController(ClaseService claseService)
-    {
-        _claseService = claseService;
-    }
+    private readonly ClaseService _claseService = claseService;
 
     [HttpGet]
     public async Task<ActionResult<List<Clase>>> GetClases()

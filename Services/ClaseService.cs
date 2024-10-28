@@ -1,15 +1,9 @@
-using MongoDB.Bson;
 using MongoDB.Driver;
 using Taller1;
 
-public class ClaseService
+public class ClaseService(MongoDbContext context)
 {
-    private readonly IMongoCollection<Clase> _clases;
-
-    public ClaseService(MongoDbContext context)
-    {
-        _clases = context.Clases;
-    }
+    private readonly IMongoCollection<Clase> _clases = context.Clases;
 
     public async Task<List<Clase>> GetClasesAsync()
     {

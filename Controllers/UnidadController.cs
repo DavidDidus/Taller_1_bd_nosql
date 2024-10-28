@@ -1,17 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UnidadController : ControllerBase
+public class UnidadController(UnidadService unidadService) : ControllerBase
 {
-    private readonly UnidadService _unidadService;
-
-    public UnidadController(UnidadService unidadService)
-    {
-        _unidadService = unidadService;
-    }
+    private readonly UnidadService _unidadService = unidadService;
 
     [HttpGet]
     public async Task<ActionResult<List<Unidad>>> GetUnidades()
@@ -36,7 +29,5 @@ public class UnidadController : ControllerBase
     {
         await _unidadService.CreateUnidadAsync(unidad);
         return CreatedAtAction(nameof(GetUnidadById), new { id = unidad.Id }, unidad);
-    }
-
-    
+    }    
 }

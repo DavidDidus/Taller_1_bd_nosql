@@ -1,23 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 
-
 [Route("[controller]")]
 [ApiController]
-public class CursoController : ControllerBase
+public class CursoController(CursoService cursoService, ComentarioCursoService comentarioService, UnidadService unidadService, ClaseService claseService) : ControllerBase
 {
-    private readonly CursoService _cursoService;
-    private readonly ComentarioCursoService _comentarioService;
-    private readonly UnidadService _unidadService;
-    private readonly ClaseService _claseService;
-
-    public CursoController(CursoService cursoService, ComentarioCursoService comentarioService, UnidadService unidadService, ClaseService claseService)
-    {
-        _cursoService = cursoService;
-        _comentarioService = comentarioService;
-        _unidadService = unidadService;
-        _claseService = claseService;
-    }
-   
+    private readonly CursoService _cursoService = cursoService;
+    private readonly ComentarioCursoService _comentarioService = comentarioService;
+    private readonly UnidadService _unidadService = unidadService;
+    private readonly ClaseService _claseService = claseService;
 
     [HttpGet]
     public async Task<ActionResult<List<Curso>>> GetCursos()
@@ -32,7 +22,6 @@ public class CursoController : ControllerBase
         
         return Ok(cursoList);
     }
-
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Curso>> GetCursoContenido(string id)
@@ -60,29 +49,31 @@ public class CursoController : ControllerBase
         return Ok(curso);
     }
 
-
     [HttpPost]
     public async Task<ActionResult<Curso>> CreateCurso(Curso curso)
     {
-        // Crear el curso y obtener el ID generado
         await _cursoService.CreateCursoAsync(curso);
 
-        // Asignar el CursoId a las unidades y guardar las unidades
-        foreach (var unidad in curso.Unidades)
+        if (curso.Unidades != null)
         {
-            unidad.CursoId = curso.Id;
-            await _unidadService.CreateUnidadAsync(unidad);
-
-            // Asignar el UnidadId a las clases y guardar las clases
-            foreach (var clase in unidad.Clases)
+            foreach (var unidad in curso.Unidades)
             {
-                clase.UnidadId = unidad.Id;
-                await _claseService.CreateClaseAsync(clase);
+                unidad.CursoId = curso.Id;
+                await _unidadService.CreateUnidadAsync(unidad);
+
+                if (unidad.Clases != null)
+                {
+                    foreach (var clase in unidad.Clases)
+                    {
+                        clase.UnidadId = unidad.Id;
+                        await _claseService.CreateClaseAsync(clase);
+                    }
+                }
             }
         }
-
         return CreatedAtAction(nameof(GetCursoById), new { id = curso.Id }, curso);
     }
+
     public async Task<ActionResult<Curso>> GetCursoById(string id)
     {
         var curso = await _cursoService.GetCursoByIdAsync(id);
@@ -94,7 +85,4 @@ public class CursoController : ControllerBase
 
         return Ok(curso);
     }
-
-    
-   
 }

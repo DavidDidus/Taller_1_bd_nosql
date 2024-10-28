@@ -15,18 +15,18 @@ public class Clase
     public int NumeroOrden { get; set; }
 
     [BsonElement("nombre")]
-    public string Nombre { get; set; }
+    public string? Nombre { get; set; }
 
     [BsonElement("video_url")]
-    public string VideoUrl { get; set; }
+    public string? VideoUrl { get; set; }
 
     [BsonElement("descripcion")]
-    public string Descripcion { get; set; }
+    public string? Descripcion { get; set; }
 
     [BsonElement("adjuntos")]
-    public List<string> Adjuntos { get; set; }
+    public List<string>? Adjuntos { get; set; }
 
     [BsonElement("comentarios")]
-    
+
     public List<ComentarioClase>? Comentarios { get; set; }
 }

@@ -1,17 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 [Route("[controller]")]
 [ApiController]
-public class ComentarioCursoController : ControllerBase {
+public class ComentarioCursoController(ComentarioCursoService comentarioCursoService) : ControllerBase {
 
-    private readonly ComentarioCursoService _comentarioCursoService;
-
-    public ComentarioCursoController(ComentarioCursoService comentarioCursoService)
-    {
-        _comentarioCursoService = comentarioCursoService;
-    }
+    private readonly ComentarioCursoService _comentarioCursoService = comentarioCursoService;
 
     [HttpGet]
     public async Task<ActionResult<List<ComentarioCurso>>> GetComentariosCurso()
@@ -36,5 +29,4 @@ public class ComentarioCursoController : ControllerBase {
         ComentarioCurso comentarioCursoCreated = await _comentarioCursoService.CreateCursoAsycn(comentarioCurso);
         return CreatedAtAction(nameof(GetComentarioCursoById), new { id = comentarioCursoCreated.Id }, comentarioCursoCreated);
     }
-
 }

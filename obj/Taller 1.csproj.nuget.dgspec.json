@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\Taller 1.csproj": {}
+    "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\Taller 1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\Taller 1.csproj": {
+    "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\Taller 1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\Taller 1.csproj",
+        "projectUniqueName": "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\Taller 1.csproj",
         "projectName": "Taller1",
-        "projectPath": "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\Taller 1.csproj",
-        "packagesPath": "C:\\Users\\drodr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\obj\\",
+        "projectPath": "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\Taller 1.csproj",
+        "packagesPath": "C:\\Users\\giaco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\drodr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\giaco\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

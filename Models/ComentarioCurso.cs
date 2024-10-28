@@ -1,6 +1,5 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
 
 public class ComentarioCurso
 {
@@ -10,26 +9,26 @@ public class ComentarioCurso
 
     [BsonElement("cursoId")]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string CursoId { get; set; }
+    public string? CursoId { get; set; }
 
     [BsonElement("autor")]
-    public string Autor { get; set; }
+    public string? Autor { get; set; }
 
     [BsonElement("fecha")]
     public DateTime Fecha { get; set; }
 
     [BsonElement("titulo")]
-    public string Titulo { get; set; }
+    public string? Titulo { get; set; }
 
     [BsonElement("detalle")]
-    public string Detalle { get; set; }
+    public string? Detalle { get; set; }
 
     [BsonElement("valoracion")]
     public int Valoracion { get; set; }
     
     [BsonElement("me_gusta")]
-    public int me_gusta { get; set; }
+    public int Me_gusta { get; set; }
     
     [BsonElement("no_me_gusta")]
-    public int no_me_gusta { get; set; }
+    public int No_me_gusta { get; set; }
 }

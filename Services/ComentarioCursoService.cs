@@ -1,15 +1,10 @@
 using MongoDB.Driver;
-
 using Taller1;
 
-public class ComentarioCursoService{
+public class ComentarioCursoService(MongoDbContext context)
+{
 
-    private readonly IMongoCollection<ComentarioCurso> _comentariosCurso;
-
-    public ComentarioCursoService(MongoDbContext context)
-    {
-        _comentariosCurso = context.ComentariosCurso;
-    }
+    private readonly IMongoCollection<ComentarioCurso> _comentariosCurso = context.ComentariosCurso;
 
     public async Task<List<ComentarioCurso>> GetComentariosCursoAsync()
     {
@@ -25,7 +20,5 @@ public class ComentarioCursoService{
     {
         await _comentariosCurso.InsertOneAsync(comentarioCurso);
         return comentarioCurso;
-    }
-
-    
+    }    
 }
