@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\Taller 1.csproj": {}
+    "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\Taller 1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\Taller 1.csproj": {
+    "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\Taller 1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\Taller 1.csproj",
+        "projectUniqueName": "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\Taller 1.csproj",
         "projectName": "Taller1",
-        "projectPath": "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\Taller 1.csproj",
-        "packagesPath": "C:\\Users\\giaco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\giaco\\Documents\\GitHub\\Taller_1_bd_nosql\\obj\\",
+        "projectPath": "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\Taller 1.csproj",
+        "packagesPath": "C:\\Users\\drodr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\drodr\\Desktop\\Universidad\\Base de datos no sql\\Taller_1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\giaco\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\drodr\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -58,6 +58,14 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.8.22, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

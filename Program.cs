@@ -1,5 +1,6 @@
 using Taller1;
 using DotNetEnv;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +21,9 @@ builder.Services.Configure<MongoDbSettings>(options =>
 });
 
 
-
+// Servicios personalizados
 builder.Services.AddSingleton<MongoDbContext>();
+builder.Services.AddSingleton<RedisService>();
 
 // Configuración de controladores
 builder.Services.AddControllers();
@@ -32,6 +34,7 @@ builder.Services.AddScoped<UnidadService>();
 builder.Services.AddScoped<ClaseService>();
 builder.Services.AddScoped<ComentarioCursoService>();
 builder.Services.AddScoped<ComentarioClaseService>();
+builder.Services.AddScoped<UsuarioService>();
 
 
 // Swagger para documentación de la API (opcional)
@@ -42,7 +45,8 @@ var app = builder.Build();
 
 app.Urls.Add("http://*:5012");
 
-if (app.Environment.IsDevelopment()) {
+if (app.Environment.IsDevelopment())
+{
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -54,5 +58,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-

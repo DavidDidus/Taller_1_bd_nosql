@@ -91,3 +91,26 @@ Accept: application/json
 }
 
 ###
+@Login = http://localhost:5012/usuarios/login
+
+POST {{Login}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Email":"johndoe@example.com",
+  "Password":"123"
+}
+###
+@Register = http://localhost:5012/usuarios/register
+
+POST {{Register}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Nombre":"Giacomo",
+  "Email":"Giacomo@example.com",
+  "Password":"123"
+}
+###
