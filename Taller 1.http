@@ -1,88 +1,89 @@
-@List_cursos = http://localhost:5012/curso
 
+@List_cursos = http://localhost:5012/curso
+// Listar todos los cursos
 GET {{List_cursos}}
 Accept: application/json
 
 ###
 @Curso_contenido = http://localhost:5012/curso/671b21d097475bd7f0f9de0a
-
+// Obtener el contenido de un curso específico
 GET {{Curso_contenido}}
 Accept: application/json 
 
 ###
 @Curso_detalle = http://localhost:5012/curso/671b21d097475bd7f0f9de0a/detalle
-
+// Obtener los detalles de un curso específico
 GET {{Curso_detalle}}
 Accept: application/json
 
 ###
 @Comentarios_curso = http://localhost:5012/comentariocurso/671b21d097475bd7f0f9de0a
-
+// Obtener los comentarios de un curso específico
 GET {{Comentarios_curso}}
 Accept: application/json
 
 ###
 @Crear_curso = http://localhost:5012/curso/
-
+// Crear un nuevo curso
 POST {{Crear_curso}}
 Content-Type: application/json
 Accept: application/json
 
 {
-    "nombre": "Curso de Desarrollo Web",
-    "descripcionBreve": "Aprende a desarrollar aplicaciones web.",
-    "imagenPrincipal": "https://example.com/imagen_principal.jpg",
-    "imagenBanner": "https://example.com/imagen_banner.jpg",
+    "nombre": "Curso de Desarrollo de Aplicaciones Móviles",
+    "descripcionBreve": "Aprende a desarrollar aplicaciones móviles desde cero.",
+    "imagenPrincipal": "https://example.com/imagen_principal_movil.jpg",
+    "imagenBanner": "https://example.com/imagen_banner_movil.jpg",
     "cantidadInscritos": 0,
     "unidades": [
         {
-            "nombre": "Introducción a HTML",
+            "nombre": "Introducción a Desarrollo Móvil",
             "numeroOrden": 1,
             "clases": [
                 {
-                    "nombre": "Estructura Básica de HTML",
+                    "nombre": "Instalación de Herramientas",
                     "numeroOrden": 1,
-                    "descripcion": "Aprende la estructura básica de un documento HTML.",
-                    "videoUrl": "https://example.com/video_html_estructura",
+                    "descripcion": "Aprende a instalar y configurar las herramientas necesarias para el desarrollo móvil.",
+                    "videoUrl": "https://example.com/video_movil_instalacion",
                     "adjuntos": [
-                        "https://example.com/adjunto1",
-                        "https://example.com/adjunto2"
+                        "https://example.com/adjunto1_movil",
+                        "https://example.com/adjunto2_movil"
                     ]
                 },
                 {
-                    "nombre": "Etiquetas Comunes de HTML",
+                    "nombre": "Conceptos Básicos de Desarrollo Móvil",
                     "numeroOrden": 2,
-                    "descripcion": "Conoce las etiquetas más comunes utilizadas en HTML.",
-                    "videoUrl": "https://example.com/video_html_etiquetas",
+                    "descripcion": "Conoce los conceptos básicos del desarrollo de aplicaciones móviles.",
+                    "videoUrl": "https://example.com/video_movil_conceptos",
                     "adjuntos": [
-                        "https://example.com/adjunto3",
-                        "https://example.com/adjunto4"
+                        "https://example.com/adjunto3_movil",
+                        "https://example.com/adjunto4_movil"
                     ]
                 }
             ]
         },
         {
-            "nombre": "Introducción a CSS",
+            "nombre": "Desarrollo de Aplicaciones Android",
             "numeroOrden": 2,
             "clases": [
                 {
-                    "nombre": "Selectores y Propiedades de CSS",
+                    "nombre": "Introducción a Android",
                     "numeroOrden": 1,
-                    "descripcion": "Aprende a utilizar selectores y propiedades en CSS.",
-                    "videoUrl": "https://example.com/video_css_selectores",
+                    "descripcion": "Aprende los conceptos básicos del desarrollo de aplicaciones Android.",
+                    "videoUrl": "https://example.com/video_android_introduccion",
                     "adjuntos": [
-                        "https://example.com/adjunto5",
-                        "https://example.com/adjunto6"
+                        "https://example.com/adjunto5_android",
+                        "https://example.com/adjunto6_android"
                     ]
                 },
                 {
-                    "nombre": "Diseño de Página con CSS",
+                    "nombre": "Componentes de una Aplicación Android",
                     "numeroOrden": 2,
-                    "descripcion": "Conoce cómo diseñar una página web utilizando CSS.",
-                    "videoUrl": "https://example.com/video_css_diseno",
+                    "descripcion": "Conoce los componentes principales de una aplicación Android.",
+                    "videoUrl": "https://example.com/video_android_componentes",
                     "adjuntos": [
-                        "https://example.com/adjunto7",
-                        "https://example.com/adjunto8"
+                        "https://example.com/adjunto7_android",
+                        "https://example.com/adjunto8_android"
                     ]
                 }
             ]
@@ -92,7 +93,7 @@ Accept: application/json
 
 ###
 @Login = http://localhost:5012/usuarios/login
-
+// Iniciar sesión
 POST {{Login}}
 Content-Type: application/json
 Accept: application/json
@@ -101,9 +102,10 @@ Accept: application/json
   "Email":"johndoe@example.com",
   "Password":"123"
 }
+
 ###
 @Register = http://localhost:5012/usuarios/register
-
+// Registrarse
 POST {{Register}}
 Content-Type: application/json
 Accept: application/json
@@ -113,4 +115,35 @@ Accept: application/json
   "Email":"Giacomo@example.com",
   "Password":"123"
 }
+
 ###
+@IngresarCurso = http://localhost:5012/usuarios/ingresar-curso
+// Ingresar a un usuario a un curso
+POST {{IngresarCurso}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "IdUsuario": "navia@example.com",
+  "IdCurso": "675617f25c4fe2ca9afe5468"
+}
+###
+
+@VerCursosInscritos = http://localhost:5012/usuarios/cursos/navia@example.com
+// Ver los cursos inscritos por un usuario
+GET  {{VerCursosInscritos}}
+
+###
+@ActualizarEstadoCurso = http://localhost:5012/usuarios/actualizar-estado
+PUT {{ActualizarEstadoCurso}}
+Content-Type: application/json
+Accept: application/json
+// Actualizar el estado de un curso para un usuario
+
+{
+  "IdUsuario": "navia@example.com",
+  "IdCurso": "675617f25c4fe2ca9afe5468",
+  "Progreso": 100,
+  "Estado": "COMPLETADO",
+  "Completado": true
+}

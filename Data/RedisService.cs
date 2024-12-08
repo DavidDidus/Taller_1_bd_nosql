@@ -7,6 +7,7 @@ namespace Taller1
     {
         private readonly ConnectionMultiplexer _connection;
         private readonly IDatabase _db;
+        private readonly IServer _server;
 
         public RedisService()
         {
@@ -17,6 +18,7 @@ namespace Taller1
                 Password = Environment.GetEnvironmentVariable("REDIS_PASSWORD")
             });
             _db = _connection.GetDatabase();
+            _server = _connection.GetServer(Environment.GetEnvironmentVariable("REDIS_URI"));
         }
 
         // Obtener valor por clave
@@ -25,12 +27,23 @@ namespace Taller1
             var value = await _db.StringGetAsync(key);
             return value.IsNullOrEmpty ? null : value.ToString();
         }
+        // Obtener todas las claves que coincidan con un patrón
+        public async Task<IEnumerable<string>> GetAsyncKeys(string pattern)
+        {
+            var keys = new List<string>();
+            await foreach (var key in _server.KeysAsync(pattern: pattern))
+            {
+                keys.Add(key);
+            }
+            return keys;
+        }
 
         // Guardar valor con clave
         public async Task SetAsync(string key, string value, TimeSpan? expiry = null)
         {
             await _db.StringSetAsync(key, value, expiry);
         }
+        
 
         // Eliminar clave
         public async Task<bool> DeleteAsync(string key)

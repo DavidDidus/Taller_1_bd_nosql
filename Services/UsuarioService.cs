@@ -21,7 +21,6 @@ public class UsuarioService
         {
             throw new Exception($"Usuario con email {usuario.Email} ya existe.");
         }
-        usuario.FechaRegistro = DateTime.Now;
 
         var usuarioJson = JsonSerializer.Serialize(usuario);
         await _redisService.SetAsync(usuarioKey, usuarioJson);

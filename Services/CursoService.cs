@@ -21,7 +21,16 @@ public class CursoService(MongoDbContext context)
 
     public async Task<Curso> CreateCursoAsync(Curso curso)
     {
-        await _cursos.InsertOneAsync(curso);
+        var nuevoCurso = new Curso
+        {
+            Nombre = curso.Nombre,
+            DescripcionBreve = curso.DescripcionBreve,
+            ImagenPrincipal = curso.ImagenPrincipal,
+            ImagenBanner = curso.ImagenBanner,
+            Valoracion = 0,
+            CantidadInscritos = 0
+        };
+        await _cursos.InsertOneAsync(nuevoCurso);
         return curso!;
     }
 
@@ -76,5 +85,15 @@ public class CursoService(MongoDbContext context)
             curso.Comentarios = comentarios;
         }
         return curso ?? new Curso();
+    }
+
+    public async Task PatchCantidadInscritos(string id)
+    {
+        var curso = await _cursos.Find(c => c.Id == id).FirstOrDefaultAsync();
+        if (curso != null)
+        {
+            curso.CantidadInscritos++;
+            await _cursos.ReplaceOneAsync(c => c.Id == id, curso);
+        }
     }
 }

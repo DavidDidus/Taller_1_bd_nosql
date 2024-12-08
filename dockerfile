@@ -18,6 +18,9 @@ COPY --from=build /app/out .
 # Definir variables de entorno
 ENV MONGO_URI="${MONGO_URI}"
 ENV MONGO_DB_NAME="${MONGO_DB_NAME}"
+ENV REDIS_URI="${REDIS_URI}"
+ENV REDIS_USER="${REDIS_USER}"
+ENV REDIS_PASSWORD="${REDIS_PASSWORD}"
 
 # Exponer el puerto en el que la aplicación escuchará
 EXPOSE 5012

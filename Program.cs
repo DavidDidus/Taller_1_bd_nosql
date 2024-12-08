@@ -35,6 +35,7 @@ builder.Services.AddScoped<ClaseService>();
 builder.Services.AddScoped<ComentarioCursoService>();
 builder.Services.AddScoped<ComentarioClaseService>();
 builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddScoped<UsuarioCursoService>();
 
 
 // Swagger para documentación de la API (opcional)
