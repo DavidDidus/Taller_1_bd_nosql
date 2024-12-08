@@ -10,7 +10,6 @@ buildear imagen
 docker build -t taller_1 .
 
 Ejecutar el contenedor y exponer el puerto 5012 del contenedor al puerto 5012 de tu máquina host:
-
 docker run -d -p 5012:5012 --env-file .env --name taller_1_container taller_1
 
 Si por alguna razon esto no funciona tambien puede ser ejecutado teniendo
