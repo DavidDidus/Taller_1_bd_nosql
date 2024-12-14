@@ -1,6 +1,10 @@
 # Compiled binary files
-.bin/
-.obj/
+bin/
+bin/**
+
+# Compiled object files
+obj/
+obj/**
 
 # NuGet packages
 *.nupkg
