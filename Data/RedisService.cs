@@ -13,16 +13,17 @@ namespace Taller1
         {
             _connection = ConnectionMultiplexer.Connect(new ConfigurationOptions
             {
-                EndPoints = { Environment.GetEnvironmentVariable("REDIS_URI") },
+                EndPoints = { Environment.GetEnvironmentVariable("REDIS_URI") ?? throw new ArgumentNullException("REDIS_URI environment variable is not set") },
                 User = Environment.GetEnvironmentVariable("REDIS_USER"),
                 Password = Environment.GetEnvironmentVariable("REDIS_PASSWORD")
             });
             _db = _connection.GetDatabase();
-            _server = _connection.GetServer(Environment.GetEnvironmentVariable("REDIS_URI"));
+            var redisUri = Environment.GetEnvironmentVariable("REDIS_URI") ?? throw new ArgumentNullException("REDIS_URI environment variable is not set");
+            _server = _connection.GetServer(redisUri);
         }
 
         // Obtener valor por clave
-        public async Task<string> GetAsync(string key)
+        public async Task<string?> GetAsync(string key)
         {
             var value = await _db.StringGetAsync(key);
             return value.IsNullOrEmpty ? null : value.ToString();
@@ -33,7 +34,10 @@ namespace Taller1
             var keys = new List<string>();
             await foreach (var key in _server.KeysAsync(pattern: pattern))
             {
-                keys.Add(key);
+                if (!string.IsNullOrEmpty(key))
+                {
+                    keys.Add(key.ToString());
+                }
             }
             return keys;
         }
@@ -43,7 +47,7 @@ namespace Taller1
         {
             await _db.StringSetAsync(key, value, expiry);
         }
-        
+
 
         // Eliminar clave
         public async Task<bool> DeleteAsync(string key)
@@ -57,5 +61,5 @@ namespace Taller1
             return await _db.KeyExistsAsync(key);
         }
     }
-    
+
 }

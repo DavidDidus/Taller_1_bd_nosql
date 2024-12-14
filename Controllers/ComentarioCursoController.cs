@@ -2,31 +2,37 @@ using Microsoft.AspNetCore.Mvc;
 
 [Route("[controller]")]
 [ApiController]
-public class ComentarioCursoController(ComentarioCursoService comentarioCursoService) : ControllerBase {
+public class ComentarioCursoController : ControllerBase
+{
+    private readonly ComentarioCursoService _comentarioCursoService;
 
-    private readonly ComentarioCursoService _comentarioCursoService = comentarioCursoService;
-
-    [HttpGet]
-    public async Task<ActionResult<List<ComentarioCurso>>> GetComentariosCurso()
+    public ComentarioCursoController(ComentarioCursoService comentarioCursoService)
     {
-        return await _comentarioCursoService.GetComentariosCursoAsync();
-    }
-
-    [HttpGet("{id}")]
-    public async Task<ActionResult<ComentarioCurso>> GetComentarioCursoById(string id)
-    {
-        var comentarioCurso = await _comentarioCursoService.GetComentarioCursoByIdAsync(id);
-        if (comentarioCurso == null)
-        {
-            return NotFound();
-        }
-        return Ok(comentarioCurso);
+        _comentarioCursoService = comentarioCursoService;
     }
 
     [HttpPost]
-    public async Task<ActionResult<ComentarioCurso>> CreateComentarioCurso(ComentarioCurso comentarioCurso)
+    public async Task<IActionResult> CrearComentarioCurso([FromBody] ComentarioCursoRequest request)
     {
-        ComentarioCurso comentarioCursoCreated = await _comentarioCursoService.CreateCursoAsycn(comentarioCurso);
-        return CreatedAtAction(nameof(GetComentarioCursoById), new { id = comentarioCursoCreated.Id }, comentarioCursoCreated);
+        await _comentarioCursoService.CrearComentarioCursoAsync(request.CursoId, request.Autor, request.Titulo, request.Detalle, request.Valoracion, request.Me_gusta, request.No_me_gusta);
+        return Ok("Comentario de curso creado exitosamente");
+    }
+
+    [HttpGet("{cursoId}")]
+    public async Task<IActionResult> ObtenerComentariosCurso(string cursoId)
+    {
+        var comentarios = await _comentarioCursoService.ObtenerComentariosCursoAsync(cursoId);
+        return Ok(comentarios);
+    }
+
+    [HttpGet("comentario/{id}")]
+    public async Task<IActionResult> ObtenerComentarioCursoPorId(string id)
+    {
+        var comentario = await _comentarioCursoService.ObtenerComentarioCursoPorIdAsync(id);
+        if (comentario == null)
+        {
+            return NotFound();
+        }
+        return Ok(comentario);
     }
 }

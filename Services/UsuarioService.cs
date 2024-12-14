@@ -31,7 +31,7 @@ public class UsuarioService
     public async Task<Usuario?> ObtenerUsuarioPorKeyAsync(string key)
     {
         var usuarioJson = await _redisService.GetAsync(key);
-        if (string.IsNullOrEmpty(usuarioJson.ToString()))
+        if (usuarioJson == null || string.IsNullOrEmpty(usuarioJson.ToString()))
         {
             return null;
         }
@@ -50,7 +50,7 @@ public class UsuarioService
         }
 
         var usuarioDataJson = JsonSerializer.Deserialize<Usuario>(usuarioData!);
-        if (usuarioDataJson.Password != usuario.Password)
+        if (usuarioDataJson == null || usuarioDataJson.Password != usuario.Password)
         {
             throw new Exception("Contraseña incorrecta.");
         }

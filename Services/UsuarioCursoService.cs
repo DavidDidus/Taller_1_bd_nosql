@@ -44,7 +44,7 @@ namespace Taller1
         public async Task<UsuarioCurso?> ObtenerUsuarioCursoPorKeyAsync(string key)
         {
             var usuarioCursoJson = await _redisService.GetAsync(key);
-            if (string.IsNullOrEmpty(usuarioCursoJson.ToString()))
+            if (usuarioCursoJson == null || string.IsNullOrEmpty(usuarioCursoJson.ToString()))
             {
                 return null;
             }
@@ -68,7 +68,7 @@ namespace Taller1
 
             return usuarioCursos;
         }
-        public async Task<UsuarioCurso> GetUsuarioCursoAsync(string idUsuario, string idCurso)
+        public async Task<UsuarioCurso?> GetUsuarioCursoAsync(string idUsuario, string idCurso)
         {
             var key = $"usuarioCurso:{idUsuario}:{idCurso}";
             var value = await _redisService.GetAsync(key);

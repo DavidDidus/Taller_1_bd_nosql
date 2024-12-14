@@ -1,6 +1,6 @@
 using Taller1;
 using DotNetEnv;
-using StackExchange.Redis;
+using Neo4j.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +20,14 @@ builder.Services.Configure<MongoDbSettings>(options =>
     options.DatabaseName = mongoDbSettings.DatabaseName;
 });
 
+var neo4jUri = Environment.GetEnvironmentVariable("NEO4J_URI");
+var neo4jUser = Environment.GetEnvironmentVariable("NEO4J_USERNAME");
+var neo4jPassword = Environment.GetEnvironmentVariable("NEO4J_PASSWORD");
+
+await using var driver = GraphDatabase.Driver(neo4jUri, AuthTokens.Basic(neo4jUser, neo4jPassword));
+await driver.VerifyConnectivityAsync();
+
+builder.Services.AddSingleton(driver);
 
 // Servicios personalizados
 builder.Services.AddSingleton<MongoDbContext>();
@@ -36,7 +44,6 @@ builder.Services.AddScoped<ComentarioCursoService>();
 builder.Services.AddScoped<ComentarioClaseService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<UsuarioCursoService>();
-
 
 // Swagger para documentación de la API (opcional)
 builder.Services.AddEndpointsApiExplorer();

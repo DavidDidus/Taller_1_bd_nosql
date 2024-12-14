@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "b0h8yzD4yJcZO6PgWZlUC2lh7RSzhpzAyBCDzAetXWM=",
+  "Hash": "0f3MmzeGQl6bjpzT96TCRAFLSkY3ZPINGBNRQ1XcNXI=",
   "Source": "Taller1",
   "BasePath": "_content/Taller1",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

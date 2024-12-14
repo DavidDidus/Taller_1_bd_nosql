@@ -1,4 +1,3 @@
-
 @List_cursos = http://localhost:5012/curso
 // Listar todos los cursos
 GET {{List_cursos}}
@@ -17,19 +16,15 @@ GET {{Curso_detalle}}
 Accept: application/json
 
 ###
-@Comentarios_curso = http://localhost:5012/comentariocurso/671b21d097475bd7f0f9de0a
-// Obtener los comentarios de un curso específico
-GET {{Comentarios_curso}}
-Accept: application/json
 
-###
-@Crear_curso = http://localhost:5012/curso/
+@Crear_curso = http://localhost:5012/curso
 // Crear un nuevo curso
 POST {{Crear_curso}}
 Content-Type: application/json
 Accept: application/json
 
 {
+    "id": "671b21d097475bd7f0f9de0a",
     "nombre": "Curso de Desarrollo de Aplicaciones Móviles",
     "descripcionBreve": "Aprende a desarrollar aplicaciones móviles desde cero.",
     "imagenPrincipal": "https://example.com/imagen_principal_movil.jpg",
@@ -147,3 +142,29 @@ Accept: application/json
   "Estado": "COMPLETADO",
   "Completado": true
 }
+
+### 
+@CrearComentarioCurso = http://localhost:5012/comentariocurso
+// Crear un comentario para un curso
+POST {{CrearComentarioCurso}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "cursoId": "671b21d097475bd7f0f9de0a",
+  "autor": "navia@example.com",
+  "titulo": "Excelente curso",
+  "detalle": "Este curso es muy completo y bien estructurado.",
+  "valoracion": 5,
+  "me_gusta": 10,
+  "no_me_gusta": 0
+}
+
+###
+
+@Comentarios_curso = http://localhost:5012/comentariocurso/671b21d097475bd7f0f9de0a
+// Obtener los comentarios de un curso específico
+GET {{Comentarios_curso}}
+Accept: application/json
+
+###
